@@ -101,7 +101,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
+bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 
@@ -242,8 +242,8 @@ bindsym $mod+shift+d exec j4-dmenu-desktop --dmenu="dmenu -fn 'DroidSansMono:bol
 # xrandr --output DVI-I-2 --right-of DVI-I-1 --auto
 
 # my current setup
-set $firstMonitor DVI-I-1
-set $secondMonitor DVI-I-2
+#set $firstMonitor DVI-I-1
+#set $secondMonitor DVI-I-2
 
 #set $firstMonitor DVI-I-2
 #set $secondMonitor VGA-0
@@ -254,41 +254,43 @@ set $secondMonitor DVI-I-2
 #set $firstMonitor DVI-0
 #set $secondMonitor DVI-1
 
-workspace 1 output $firstMonitor
-workspace 2 output $firstMonitor
-workspace 3 output $firstMonitor
-workspace 4 output $firstMonitor
-workspace 5 output $firstMonitor
-workspace 6 output $secondMonitor
-workspace 7 output $secondMonitor
-workspace 8 output $secondMonitor
-workspace 9 output $secondMonitor
-workspace 10 output $secondMonitor
+#workspace 1 output $firstMonitor
+#workspace 2 output $firstMonitor
+#workspace 3 output $firstMonitor
+#workspace 4 output $firstMonitor
+#workspace 5 output $firstMonitor
+#workspace 6 output $secondMonitor
+#workspace 7 output $secondMonitor
+#workspace 8 output $secondMonitor
+#workspace 9 output $secondMonitor
+#workspace 10 output $secondMonitor
 
 # switch to workspace
-bindsym $mod+ampersand workspace 1
-bindsym $mod+eacute workspace 2
-bindsym $mod+quotedbl workspace 3
-bindsym $mod+apostrophe workspace 4
-bindsym $mod+parenleft workspace 5
-bindsym $mod+section workspace 6
-bindsym $mod+egrave workspace 7
-bindsym $mod+exclam workspace 8
-bindsym $mod+ccedilla workspace 9
-bindsym $mod+agrave workspace 10
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+ampersand move container to workspace 1
-bindsym $mod+Shift+eacute move container to workspace 2
-bindsym $mod+Shift+quotedbl move container to workspace 3
-bindsym $mod+Shift+apostrophe move container to workspace 4
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
 bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+section move container to workspace 6
-bindsym $mod+Shift+egrave move container to workspace 7
-bindsym $mod+Shift+exclam move container to workspace 8
-bindsym $mod+Shift+ccedilla move container to workspace 9
-bindsym $mod+Shift+agrave move container to workspace 10
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
 
+bindsym $mod+Ctrl+Right move workspace to output right
+bindsym $mod+Ctrl+Left move workspace to output left
 
 ################### MOUSE ######################
 
@@ -312,19 +314,21 @@ bindsym $mod+Shift+agrave move container to workspace 10
 ################### ASSIGN ######################
 
 
-assign [class="Firefox"]          → 1
-assign [class="sublime-text"]     → 2
-assign [class="sublime_text"]     → 2
-assign [class="Sublime_text"]     → 2
-assign [class="Inkscape"]         → 3
-assign [class="Gimp"]             → 4
-assign [class="vlc"]              → 7
-assign [class="Nemo"]             → 8
-assign [class="Geary"]            → 9
-assign [class="Evolution"]        → 9
-assign [class="Spotify"]          → 10
+#assign [class="Firefox"]          → 1
+assign [class="jetbrains-webstorm"] → 2
+assign [class="jetbrains-studio"] → 2
+assign [class="sublime-text"]     → 5
+#assign [class="sublime_text"]     → 2
+#assign [class="Sublime_text"]     → 2
+#assign [class="Inkscape"]         → 3
+#assign [class="Gimp"]             → 4
+#assign [class="vlc"]              → 7
+#assign [class="Nemo"]             → 8
+#assign [class="Geary"]            → 9
+#assign [class="Evolution"]        → 9
+#assign [class="Spotify"]          → 10
 #fix for spotify not moving to workspace 10
-for_window [class="Spotify"] move to workspace 10
+#for_window [class="Spotify"] move to workspace 10
 
 
 ################### EXECUTE ######################
@@ -345,13 +349,16 @@ exec blueberry-tray
 
 # USER APPLICATIONS
 
-exec firefox
-for_window [class="Firefox"] focus
-exec subl
+#exec firefox
+#for_window [class="Firefox"] focus
+#exec subl
 #exec evolution
-exec spotify
-for_window [class="Spotify"] focus
-exec nemo --no-desktop
+#exec spotify
+#for_window [class="Spotify"] focus
+exec google-chrome --no-desktop; workspace 1;
+exec google-chrome --no-desktop; workspace 10;
+exec terminator --no-desktop; workspace 3;
+exec nemo --no-desktop; workspace 7;
 exec ~/.config/i3/start-conkys.sh
 #exec dunst -config ~/.config/i3/dunstrc
 
@@ -359,23 +366,24 @@ exec ~/.config/i3/start-conkys.sh
 ################### SHORTCUTS APPLICATIONS ######################
 #mod1 = ALT
 
-bindsym $mod+Shift+Return exec nemo --no-desktop; workspace 8;focus
+bindsym $mod+Shift+Return exec nemo --no-desktop; workspace 7;focus
+bindsym control+mod1+g exec google-chrome --no-desktop; focus
 bindsym control+mod1+f exec firefox;workspace 1; focus
-bindsym $mod+F1 exec firefox;workspace 1;focus
+#bindsym $mod+F1 exec firefox;workspace 1;focus
 bindsym control+mod1+w exec subl;workspace 2;focus
-bindsym $mod+F2 exec subl;workspace 2;focus
+#bindsym $mod+F2 exec subl;workspace 2;focus
 bindsym control+mod1+i exec inkscape;workspace 3;focus
-bindsym $mod+F3 exec inkscape;workspace 3;focus
-bindsym control+mod1+g exec gimp;workspace 4;focus
-bindsym $mod+F4 exec gimp;workspace 4;focus
-bindsym control+mod1+b exec nemo --no-desktop;workspace 8;focus
-bindsym $mod+F8 exec nemo --no-desktop;workspace 8;focus
-bindsym control+mod1+e exec evolution;workspace 9;focus
-bindsym $mod+F9 exec evolution;workspace 9;focus
-bindsym control+mod1+s exec spotify;workspace 10;focus
-bindsym $mod+F10 exec spotify;workspace 10;focus
+#bindsym $mod+F3 exec inkscape;workspace 3;focus
+#bindsym control+mod1+g exec gimp;workspace 4;focus
+#bindsym $mod+F4 exec gimp;workspace 4;focus
+bindsym control+mod1+b exec nemo --no-desktop;workspace 7;focus
+#bindsym $mod+F8 exec nemo --no-desktop;workspace 7;focus
+#bindsym control+mod1+e exec evolution;workspace 9;focus
+#bindsym $mod+F9 exec evolution;workspace 9;focus
+#bindsym control+mod1+s exec spotify;workspace 10;focus
+#bindsym $mod+F10 exec spotify;workspace 10;focus
 #bindsym control+mod1+t exec terminator; focus
-bindsym control+mod1+t exec gnome-terminal; focus
+#bindsym control+mod1+t exec gnome-terminal; focus
 bindsym control+mod1+n exec cinnamon-settings
 
 
@@ -408,6 +416,7 @@ bindsym Control+Print exec gnome-screenshot -i
 
 
 #floating enabled from some programs
+for_window [class="^Slack$"] floating enable
 for_window [class="Gnome-disks"] floating enable
 for_window [class="^Skype$"] floating enable
 for_window [class="^Gnome-font-viewer$"] floating enable
@@ -462,7 +471,7 @@ bindsym mod1+f exec variety -f
 ################### MODE_SYSTEM ######################
 
 
-bindsym $mod+Pause mode "$mode_system"
+bindsym $mod+Escape mode "$mode_system"
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
@@ -489,6 +498,11 @@ bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer
 bindsym XF86AudioNext exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next" 
 bindsym XF86AudioPrev exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 bindsym XF86AudioStop exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+
+
+################### BRIGHTNESS ##############
+bindsym XF86MonBrightnessDown exec "xbacklight -dec 2"
+bindsym XF86MonBrightnessUp exec "xbacklight -inc 2"
 
 
 ################### BAR ######################
@@ -557,9 +571,11 @@ bar {
 	# status_command ~/.config/i3/start-conky-i3statusbar.sh
 
 	
-	height 25
+    height 25
     workspace_buttons yes
-    
+    position top
+    tray_output primary    
+
     colors {
             background #2F2F2F
             statusline #eeeeee
@@ -577,7 +593,8 @@ bar {
 # class                 border  backgr. text    indicator
 client.placeholder      #242424 #242424 #242424
 client.background       #242424 #242424 #242424
-client.focused          #4A4A4A #4A4A4A #e5e5e5 #4A4A4A
+#client.focused          #4A4A4A #4A4A4A #e5e5e5 #4A4A4A
+client.focused          #136BFF #136BFF #e5e5e5 #136BFF
 client.unfocused        #222222 #222222 #aaaaaa #222222
 client.focused_inactive #222222 #222222 #a9a9a9 #222222
 client.urgent           #4A4A4A #4A4A4A #f7f7f7 #4A4A4A
@@ -666,7 +683,7 @@ client.urgent           #4A4A4A #4A4A4A #f7f7f7 #4A4A4A
 for_window [class="^.*"] border pixel 5
 gaps inner 5
 gaps outer 5
-#smart_gaps on
+smart_gaps on
 #smart_borders on
 
 
@@ -720,4 +737,5 @@ mode "$mode_gaps_outer" {
 #if you want transparency on non-focused windows
 exec_always compton --config ~/.config/i3/compton.conf
 
-
+# Trackpad fix
+exec_always --no-startup-id ~/scripts/touchpad-touch.sh
